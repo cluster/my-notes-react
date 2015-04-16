@@ -14,7 +14,7 @@ var Header = React.createClass({
         <NoteTextInput
           id="new-note"
           onSave={this._onSave}
-          title='toto'
+          title='toto4'
         />
       </header>
     );
@@ -27,7 +27,6 @@ var Header = React.createClass({
    * @param {string} text
    */
   _onSave: function(note) {
-    console.log(note);
     if (note.title && note.description){
       NoteActions.create(note);
     }
