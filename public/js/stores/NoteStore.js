@@ -9,13 +9,12 @@ var _notes = {};
 
 /**
  * Create a NOTE item.
- * @param  {string} text The content of the NOTE
+ * @param  {obj} text The content of the NOTE
  */
 function create(note) {
   // Hand waving here -- not showing how this interacts with XHR or persistent
   // server-side storage.
   // Using the current timestamp + random number in place of a real id.
-  console.log(note)
   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
   _notes[id] = {
     id: id,
@@ -23,6 +22,21 @@ function create(note) {
     title: note.title,
     description: note.description
   };
+  fetch('/api/notes', {method:"post", headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },body:JSON.stringify(note)})
+  .then(
+    function(response) {
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
 }
 
 /**

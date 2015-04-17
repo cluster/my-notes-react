@@ -12,7 +12,7 @@ var express = require('express'),
 //conf
 //
 // require('./config/passport')(passport); // pass passport for configuration
-mongoose.connect('mongodb://localhost/my-notes');
+mongoose.connect('mongodb://localhost/mpk');
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));

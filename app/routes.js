@@ -14,7 +14,7 @@ module.exports = function(app, passport) {
   app.post('/api/notes', function(req, res){
     Note.create({
       title : req.body.title,
-      content : req.body.content
+      description : req.body.description
     }, function(err, notes){
         if(err)
           req.send(err);
